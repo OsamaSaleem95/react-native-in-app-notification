@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity, StatusBar, View, Text, Image, Vibration } from 'react-native';
 import { getStatusBarHeight, isIphoneX } from 'react-native-iphone-x-helper';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+// import { Languages, Theme } from '@common';
 
 const styles = {
   root: {
     flex: 1,
-    backgroundColor: '#050505',
+    backgroundColor: '#fff',
   },
   container: {
     position: 'absolute',
@@ -19,9 +20,10 @@ const styles = {
   content: {
     flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   iconApp: {
-    marginTop: 10,
+    // marginTop: 10,
     marginLeft: 20,
     resizeMode: 'contain',
     width: 24,
@@ -38,13 +40,15 @@ const styles = {
   textContainer: {
     alignSelf: 'center',
     marginLeft: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
-    color: '#FFF',
+    color: '#0469B2',
     fontWeight: 'bold',
   },
   message: {
-    color: '#FFF',
+    color: '#0469B2',
     marginTop: 5,
   },
   footer: {
@@ -126,7 +130,7 @@ class DefaultNotificationBody extends React.Component {
             {this.renderIcon()}
             <View style={styles.textContainer}>
               <Text numberOfLines={1} style={styles.title}>{title}</Text>
-              <Text numberOfLines={1} style={styles.message}>{message}</Text>
+              {/* <Text numberOfLines={1} style={styles.message}>{message}</Text> */}
             </View>
           </TouchableOpacity>
 
@@ -150,10 +154,10 @@ DefaultNotificationBody.propTypes = {
 
 DefaultNotificationBody.defaultProps = {
   title: 'Notification',
-  message: 'This is a test notification',
+  message: 'This is Test',
   vibrate: true,
   isOpen: false,
-  iconApp: null,
+  iconApp:null,
   icon: null,
   onPress: () => null,
   onClose: () => null,
