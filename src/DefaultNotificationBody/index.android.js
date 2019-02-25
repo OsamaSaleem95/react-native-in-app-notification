@@ -10,24 +10,29 @@ const styles = {
   content: {
     flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   iconContainer: {
     width: 60,
     height: 70,
-    marginTop: 5,
     marginLeft: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   icon: {
+    marginLeft: 10,
     resizeMode: 'contain',
-    width: 60,
-    height: 70,
+    width: 48,
+    height: 48,
   },
   textContainer: {
     alignSelf: 'center',
     marginLeft: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
-    color: '#000',
+    color: '#0469B2',
     fontWeight: 'bold',
   },
   message: {
@@ -90,7 +95,6 @@ class DefaultNotificationBody extends React.Component {
           </View>
           <View style={styles.textContainer}>
             <Text numberOfLines={1} style={styles.title}>{title}</Text>
-            <Text numberOfLines={1} style={styles.message}>{message}</Text>
           </View>
         </TouchableOpacity>
       </GestureRecognizer>
@@ -111,7 +115,7 @@ DefaultNotificationBody.propTypes = {
 
 DefaultNotificationBody.defaultProps = {
   title: 'Notification',
-  message: 'This is a test notification',
+  message: null,
   vibrate: true,
   isOpen: false,
   iconApp: null,
