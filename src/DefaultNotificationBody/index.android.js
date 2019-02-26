@@ -20,10 +20,10 @@ const styles = {
     alignItems: 'center',
   },
   icon: {
-    marginLeft: 10,
+    marginLeft: 20,
     resizeMode: 'contain',
-    width: 48,
-    height: 48,
+    width: 25,
+    height: 25,
   },
   textContainer: {
     alignSelf: 'center',
@@ -80,6 +80,8 @@ class DefaultNotificationBody extends React.Component {
       message,
       iconApp,
       icon,
+      titleStyle,
+      numberOfLines
     } = this.props;
 
     return (
@@ -94,7 +96,7 @@ class DefaultNotificationBody extends React.Component {
             {(icon || iconApp) && <Image source={icon || iconApp} style={styles.icon} />}
           </View>
           <View style={styles.textContainer}>
-            <Text numberOfLines={1} style={styles.title}>{title}</Text>
+            <Text numberOfLines={1} style={[styles.title, titleStyle]}>{title}</Text>
           </View>
         </TouchableOpacity>
       </GestureRecognizer>
