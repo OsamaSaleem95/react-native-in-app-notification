@@ -29,12 +29,14 @@ class Notification extends Component {
   }
 
   show(
-    { title, message, onPress, icon, vibrate } = {
+    { title, message, onPress, icon, vibrate , titleStyle,numberOfLines} = {
       title: '',
       message: '',
       onPress: null,
       icon: null,
       vibrate: true,
+      titleStyle:{},
+      numberOfLines:1
     },
   ) {
     const { closeInterval } = this.props;
@@ -53,6 +55,8 @@ class Notification extends Component {
           onPress,
           icon,
           vibrate,
+          titleStyle,
+          numberOfLines
         },
         () => this.showNotification(() => {
           this.currentNotificationInterval = setTimeout(() => {
@@ -64,6 +68,8 @@ class Notification extends Component {
                 onPress: null,
                 icon: null,
                 vibrate: true,
+                titleStyle:{},
+                numberOfLines:1
               },
               this.closeNotification,
             );
@@ -104,10 +110,10 @@ class Notification extends Component {
       notificationBodyComponent: NotificationBody,
     } = this.props;
 
-    const { animatedValue, title, message, onPress, isOpen, icon, vibrate } = this.state;
+    const { animatedValue, title, message, onPress, isOpen, icon, vibrate,titleStyle,numberOfLines } = this.state;
 
     const height = baseHeight + this.heightOffset;
-
+console.log(titleStyle)
     return (
       <Animated.View
         style={[
@@ -133,6 +139,8 @@ class Notification extends Component {
           iconApp={iconApp}
           icon={icon}
           vibrate={vibrate}
+          titleStyle={titleStyle}
+          numberOfLines={numberOfLines}
           onClose={() => this.setState({ isOpen: false }, this.closeNotification)}
         />
       </Animated.View>

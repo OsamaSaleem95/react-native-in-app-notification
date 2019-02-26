@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, StatusBar, View, Text, Image, Vibration } from 'react-native';
+import { TouchableOpacity, StatusBar, View, Text, Image, Vibration,Dimensions } from 'react-native';
 import { getStatusBarHeight, isIphoneX } from 'react-native-iphone-x-helper';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 // import { Languages, Theme } from '@common';
@@ -21,6 +21,7 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    width:Dimensions.get('window').width
   },
   iconApp: {
     // marginTop: 10,
@@ -116,8 +117,10 @@ class DefaultNotificationBody extends React.Component {
     const {
       title,
       message,
+      titleStyle,
+      numberOfLines
     } = this.props;
-
+    console.log(titleStyle)
     return (
       <View style={styles.root}>
         <GestureRecognizer onSwipe={this.onSwipe} style={styles.container}>
@@ -129,7 +132,7 @@ class DefaultNotificationBody extends React.Component {
           >
             {this.renderIcon()}
             <View style={styles.textContainer}>
-              <Text numberOfLines={1} style={styles.title}>{title}</Text>
+              <Text numberOfLines={numberOfLines} style={[styles.title, titleStyle]}>{title}</Text>
               {/* <Text numberOfLines={1} style={styles.message}>{message}</Text> */}
             </View>
           </TouchableOpacity>
@@ -150,6 +153,7 @@ DefaultNotificationBody.propTypes = {
   onClose: PropTypes.func,
   iconApp: Image.propTypes.source,
   icon: Image.propTypes.source,
+  titleStyle:PropTypes.object
 };
 
 DefaultNotificationBody.defaultProps = {
@@ -157,10 +161,11 @@ DefaultNotificationBody.defaultProps = {
   message: 'This is Test',
   vibrate: true,
   isOpen: false,
-  iconApp:null,
+  iconApp: null,
   icon: null,
   onPress: () => null,
   onClose: () => null,
+  titleStyle:{}
 };
 
 export default DefaultNotificationBody;
