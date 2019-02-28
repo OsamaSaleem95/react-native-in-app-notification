@@ -21,7 +21,8 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    width:Dimensions.get('window').width
+    width:'100%',
+    // marginHorizontal: 10,
   },
   iconApp: {
     // marginTop: 10,
@@ -47,6 +48,7 @@ const styles = {
   title: {
     color: '#0469B2',
     fontWeight: 'bold',
+    width:Dimensions.get('window').width-100
   },
   message: {
     color: '#0469B2',
@@ -133,7 +135,6 @@ class DefaultNotificationBody extends React.Component {
             {this.renderIcon()}
             <View style={styles.textContainer}>
               <Text numberOfLines={numberOfLines} style={[styles.title, titleStyle]}>{title}</Text>
-              {/* <Text numberOfLines={1} style={styles.message}>{message}</Text> */}
             </View>
           </TouchableOpacity>
 

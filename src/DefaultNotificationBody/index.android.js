@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Text, Image, Vibration } from 'react-native';
+import { TouchableOpacity, View, Text, Image, Vibration,Dimensions } from 'react-native';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
 const styles = {
@@ -34,6 +34,7 @@ const styles = {
   title: {
     color: '#0469B2',
     fontWeight: 'bold',
+    width:Dimensions.get('window').width-100,
   },
   message: {
     color: '#000',
@@ -96,7 +97,7 @@ class DefaultNotificationBody extends React.Component {
             {(icon || iconApp) && <Image source={icon || iconApp} style={styles.icon} />}
           </View>
           <View style={styles.textContainer}>
-            <Text numberOfLines={1} style={[styles.title, titleStyle]}>{title}</Text>
+            <Text numberOfLines={numberOfLines} style={[styles.title, titleStyle]}>{title}</Text>
           </View>
         </TouchableOpacity>
       </GestureRecognizer>
