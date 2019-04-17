@@ -68,9 +68,9 @@ class DefaultNotificationBody extends React.Component {
 
   onSwipe(direction) {
     const { onClose } = this.props;
-    const { SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
+    const { SWIPE_LEFT, SWIPE_RIGHT,SWIPE_UP } = swipeDirections;
 
-    if (direction === SWIPE_RIGHT || direction === SWIPE_LEFT) {
+    if (direction === SWIPE_RIGHT || direction === SWIPE_LEFT || direction === SWIPE_UP) {
       onClose();
     }
   }
